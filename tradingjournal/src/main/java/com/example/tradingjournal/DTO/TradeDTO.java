@@ -22,6 +22,7 @@ public class TradeDTO {
     private String tags;
     private String notes;
     private int confidence;
+    private String mistakes;
 
     public TradeDTO() {}
 
