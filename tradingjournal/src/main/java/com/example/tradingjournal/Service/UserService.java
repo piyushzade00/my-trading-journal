@@ -27,6 +27,11 @@ public class UserService implements ServiceInterface<UserDTO> {
         return userRepository.save(userDTO);
     }
 
+    public boolean authenticateUser(String email, String password) {
+        Optional<UserDTO> user = userRepository.validateUserLogin(email, password);
+        return user.isPresent();
+    }
+
     @Override
     public Optional<UserDTO> findByName(String name) {
         return userRepository.findByUserName(name);

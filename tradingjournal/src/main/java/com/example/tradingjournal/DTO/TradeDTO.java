@@ -24,6 +24,8 @@ public class TradeDTO {
     private int confidence;
     private String mistakes;
 
+    
+
     public TradeDTO() {}
 
     public TradeDTO(long tradeID, String market, String symbol, String notes, String tags, double stopLoss,  int confidence) {
