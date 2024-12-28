@@ -1,0 +1,295 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* color-scheme: light dark; */
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #222629; /* Match page background */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.app-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.app-logo img {
+    width: 80px;
+    height: auto;
+    max-width: 500px; 
+    max-height: 300px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+.container{
+    height: 100vh;
+    width: 140%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222629;
+    flex-direction: column;
+    padding-top: 15px;
+}
+
+.form{
+    background: #fff;
+    border-radius: 6px;
+    max-width: 430px;
+    width: 80%;
+    padding: 30px;
+}
+
+header{
+    font-size: 28px;
+    font-weight: 600;
+    color: #232836;
+    text-align: center;
+}
+
+.signup-header{
+    width: 100%;
+    background-color: #222629; /* Matches container background */
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px; /* Space below header */
+}
+
+.signup-header .content{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+form{
+    margin-top: 30px;
+}
+
+.form .field{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    border-radius: 6px;
+}
+
+.field input,
+.field button{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+
+.field input{
+    border: 1px solid #CACACA;
+    padding: 0 15px;
+    outline: none;
+}
+
+.field input:focus{
+    border-bottom-width: 2px;
+}
+
+.form-link{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.form-link span,
+.form-link a{
+    font-size: 14px;
+    font-weight: 400;
+    color: #232836;
+}
+
+.form a{
+    text-decoration: none;
+    color: #0171d3;
+}
+
+.form-content a:hover{
+    text-decoration: underline;
+}
+
+.eye-icon{
+    font-size: 18px;
+    color: #8b8b8b;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 5px;
+}
+
+.line{
+    height: 1px;
+    width: 100%;
+    position: relative;
+    background-color: #d4d4d4;
+    margin: 36px 0;
+}
+
+.line::before{
+    content: 'Or';
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    color: #232836;
+    padding: 0 15px;
+}
+
+.field button{
+    background-color: #0171d3;
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.field button:hover{
+    background-color: #016dcb;
+}
+
+.media-options a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img.google-img{
+    position: absolute;
+    top: 50%;
+    left: 65px;
+    transform : translateY(-53%);
+    height: 25px;
+    width: 25px;
+    object-fit: cover;
+}
+
+img.google-img.signup{
+    left: 43px;
+}
+
+a.google{
+    border: 1px solid #CACACA;
+}
+
+a.google span{
+    font-weight: 500;
+    opacity: 0.6;
+    color: #232836;
+}
+
+.login-link{
+    color: #0171d3;
+    text-decoration: none;
+}
+
+.login-link:hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 400px) {
+    .form{
+        padding: 15px;
+    }
+}
+
+.error-message{
+    font-size: 18px;
+    font-weight: 400;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+}
