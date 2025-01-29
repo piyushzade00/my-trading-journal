@@ -7,6 +7,7 @@ import com.example.tradingjournal.HardCodedValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
@@ -27,14 +28,13 @@ public class UserService implements ServiceInterface<UserDTO> {
         return userRepository.save(userDTO);
     }
 
-    public boolean authenticateUser(String email, String password) {
-        Optional<UserDTO> user = userRepository.validateUserLogin(email, password);
-        return user.isPresent();
-    }
-
     @Override
     public Optional<UserDTO> findByName(String name) {
-        return userRepository.findByUserName(name);
+        return userRepository.findByName(name);
+    }
+
+    public Optional<UserDTO> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public Optional<UserDTO> findUserByUserId(long userId) {
@@ -47,8 +47,27 @@ public class UserService implements ServiceInterface<UserDTO> {
     }
 
     @Override
-    public int deleteByName(String name) {
-        return userRepository.deleteByUserName(name);
+    public int deleteByName(String name){
+        return 0;
+    }
+
+    @Transactional
+    public int deleteByEmail(String email) {
+        Optional<UserDTO> user = findByEmail(email);
+        if (user.isPresent()) {
+            userRepository.delete(user.get());
+            return 1;
+        }
+        return 0;
+    }
+
+    public int changePasswordInDB(String email, String password)
+    {
+        return userRepository.changePassword(email,password);
+    }
+
+    public int updateUserInfo(UserDTO userDTO) {
+        return userRepository.updateUserInfo(userDTO.getUserName(),userDTO.getPreferredLanguage(), userDTO.getEmailAddress());
     }
 
     public static void validateUser(UserDTO user) throws ResponseStatusException {

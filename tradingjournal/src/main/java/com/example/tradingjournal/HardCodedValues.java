@@ -19,6 +19,7 @@ public class HardCodedValues {
         public static final String DEPOSIT = "Deposit";
         public static final String AT_LEAST_ONE_TRANSACTION_SHOULD_BE_PRESENT_WHEN_CREATING_NEW_ACCOUNT = "At least one transaction should be present when creating new account";
         public static final String FIRST_TRANSACTION_CANNOT_BE_A_WITHDRAWAL_TRANSACTION = "First Transaction in the Account cannot be Withdrawal Transaction";
+
     }
 
 }

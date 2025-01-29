@@ -13,7 +13,7 @@ public class UserDTO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String userName;
 
     @Column(nullable = false, unique = true)
@@ -22,16 +22,22 @@ public class UserDTO {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String preferredLanguage;
+
     @OneToMany(mappedBy = "userDTO", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AccountDTO> accounts = new ArrayList<>();
 
+    @OneToMany(mappedBy = "userDTO", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RefreshTokenDTO> refreshTokens = new ArrayList<>();
+
     public UserDTO() {}
 
-    public UserDTO(long userId, String userName, String emailAddress, String password) {
-        this.userId = userId;
+    public UserDTO(String userName, String emailAddress, String password, String preferredLanguage) {
         this.userName = userName;
         this.emailAddress = emailAddress;
         this.password = password;
+        this.preferredLanguage = preferredLanguage;
     }
 
     public long getUserId() {
@@ -64,5 +70,40 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPreferredLanguage() {
+        return preferredLanguage;
+    }
+
+    public void setPreferredLanguage(String preferredLanguage) {
+        this.preferredLanguage = preferredLanguage;
+    }
+
+    @PrePersist
+    public void setDefaultPreferredLanguage() {
+        if(preferredLanguage == null) {
+            this.preferredLanguage = "English";
+        }
+    }
+
+    public void addAccount(AccountDTO account) {
+        accounts.add(account);
+        account.setUserDTO(this);
+    }
+
+    public void removeAccount(AccountDTO account) {
+        accounts.remove(account);
+        account.setUserDTO(null);
+    }
+
+    public void addRefreshToken(RefreshTokenDTO refreshToken) {
+        refreshTokens.add(refreshToken);
+        refreshToken.setUser(this);
+    }
+
+    public void removeRefreshToken(RefreshTokenDTO refreshToken) {
+        refreshTokens.remove(refreshToken);
+        refreshToken.setUser(null);
     }
 }
